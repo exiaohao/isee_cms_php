@@ -34,17 +34,16 @@
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
                         <li class="active"><a href="#">首页</a></li>
-                        <li><a href="/intro">招生简章</a></li>
                         <?php
                         if(!empty($argv['username']))
                         {
                           echo '<li><a href="javascript:;">欢迎,'.$argv['username'].'</a></li>
-                          <a class="btn btn-info" href="/my#!/home">考生面板</a>
+                          <a class="btn btn-info" href="/my#!/home">控制面板</a>
                           <a class="btn btn-warning" href="/account/logout">退出</a>';
                         }
                         else {
-                          echo '<a class="btn btn-success" href="/register">立即报名</a>
-                          <a class="btn btn-info" href="/account">考生登录</a>';
+                          echo '<a class="btn btn-success" href="/register">注册</a>
+                          <a class="btn btn-info" href="/account">登录</a>';
                         }
                         ?>
 

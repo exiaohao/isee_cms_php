@@ -11,7 +11,7 @@ define('DEBUG', true);
 //DEFAULT_HOMEPAGE
 define('DEFAULT_HOMEPAGE', 'welcome');
 //SITE_NAME
-define('SITE_NAME', '嘉兴学院三位一体招生');
+define('SITE_NAME', 'ZJU ISEE');
 //TTL_LOGINATTEMPT
 define('TTL_LOGIN_ATTEMPT', 90);
 //TTL_REGISTER_ATTEMPT
@@ -22,7 +22,8 @@ define('TTL_REGISTER_CHK_IDCARD', 15);
 define('FREQ_REGISTER_CHK_IDCARD', 4);
 //TTL_LOGIN_USER
 define('TTL_LOGIN_USER', 3600);
-
+//SITE_URL
+define('SITE_URL', 'http://192.168.3.10:8801');
 
 
 define('USER_IS_LOGIN', 1);

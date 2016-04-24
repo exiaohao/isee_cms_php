@@ -14,9 +14,9 @@ if(!defined('IN_PAGE') || IN_PAGE != true )
  * 配置MySQL
  */
 define('MYSQL_HOST', 'localhost');
-define('MYSQL_USER', 'swyt');
-define('MYSQL_PAWD', 'S5YmmyD9HHFt86jx');
-define('MYSQL_TABL', 'swyt');
+define('MYSQL_USER', 'isee_crm');
+define('MYSQL_PAWD', 'XdccaNpThVHWCNRm');
+define('MYSQL_TABL', 'isee_crm');
 
 /*
  * 配置REDIS

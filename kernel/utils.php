@@ -124,6 +124,25 @@ class utils extends db
         }
 
     }
+    /*
+     * check email
+     *
+     */
+    function checkMail($email, $domain = NULL)
+    {
+        if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email)) {
+            return false;
+        }
+        if($domain)
+        {
+            $domain_name = explode('@', $email);
+            if($domain_name[count($domain_name)-1] != $domain)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /*
      * 请求次数保护
