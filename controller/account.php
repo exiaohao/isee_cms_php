@@ -29,22 +29,14 @@ class account extends common
     {
         if($_POST['_token'] == $_SESSION['token'])
         {
-            if($this->utils->checkIdCard($_POST['username']))
-            {
-                $idcard = $_POST['username'];
-            }
-            else
-            {
-                header('Location:/account#!/type/bad_username');
-            }
-            $login_attempt = $this->mysql->query('SELECT `id`, `idcard` ,`password` ,`password_salt` ,33`status` FROM `student_basicinfo`
-            WHERE `idcard` LIKE \''.$idcard.'\' LIMIT 0,1;');
-
+            $idcard = $_POST['username'];
+            $login_attempt = $this->mysql->query('SELECT * FROM `user` WHERE `email` = \''.$idcard.'\' LIMIT 0,1;');
             if($login_attempt->num_rows > 0)
             {
                 print_r($_POST);
                 $user_basic_info = $login_attempt->fetch_assoc();
-                if($this->check_pass_hash($_POST['password'], $user_basic_info['password'], $user_basic_info['password_salt']))
+                print_r($user_basic_info);
+                if($this->check_pass_hash($_POST['password'], $user_basic_info['passhash'], $user_basic_info['passsalt']))
                 {
                     //login successful!
                     $user_token = 'user_login_'.$this->utils->create_uuid();
@@ -61,7 +53,6 @@ class account extends common
                 }
                 else
                 {
-                    //
                     header('Location:/account#!/type/bad_username_or_password/0');
                 }
             }

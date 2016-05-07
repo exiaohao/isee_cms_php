@@ -30,16 +30,19 @@ define('USER_IS_LOGIN', 1);
 
 require 'class_db.php';
 require 'utils.php';
+require 'category.php';
 
 class common extends db
 {
     var $global_error;
     var $utils;
+    var $category;
     function __construct()
     {
         parent::__construct();
         $this->global_error = $this->callClass('global_error');
         $this->utils = $this->callClass('utils');
+        $this->category = $this->callClass('category');
     }
     /*
      * Call Class
@@ -80,6 +83,9 @@ class common extends db
      */
     function check_pass_hash($pass_origin, $passhash, $salt)
     {
+        print_r($pass_origin);
+        print_r($passhash);
+        print_r($salt);
         if( md5($pass_origin.$salt) == $passhash ) return true;
         else return false;
     }
