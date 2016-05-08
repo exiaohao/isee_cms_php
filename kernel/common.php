@@ -24,6 +24,12 @@ define('FREQ_REGISTER_CHK_IDCARD', 4);
 define('TTL_LOGIN_USER', 3600);
 //SITE_URL
 define('SITE_URL', 'http://192.168.3.10:8801');
+//STANDARD_USER
+define('STANDARD_USER', 0);
+//PUB_AVAILABLE
+define('PUB_AVAILABLE', 1);
+//ADMIN
+define('PUB_ADMIN', 2);
 
 
 define('USER_IS_LOGIN', 1);
@@ -31,18 +37,21 @@ define('USER_IS_LOGIN', 1);
 require 'class_db.php';
 require 'utils.php';
 require 'category.php';
+require 'user.php';
 
 class common extends db
 {
     var $global_error;
     var $utils;
     var $category;
+    var $user;
     function __construct()
     {
         parent::__construct();
         $this->global_error = $this->callClass('global_error');
         $this->utils = $this->callClass('utils');
         $this->category = $this->callClass('category');
+        $this->user = $this->callClass('user');
     }
     /*
      * Call Class
@@ -79,17 +88,24 @@ class common extends db
         return md5($pass.$salt);
     }
     /*
-     * 检查用户的密码
+     * 检查密码
      */
     function check_pass_hash($pass_origin, $passhash, $salt)
     {
-        print_r($pass_origin);
-        print_r($passhash);
-        print_r($salt);
+//        print_r($pass_origin);
+//        print_r($passhash);
+//        print_r($salt);
         if( md5($pass_origin.$salt) == $passhash ) return true;
         else return false;
     }
-
+    /*
+     * 检查某用户的密码
+     */
+    function check_user_pass_hash($pass_origin, $uid)
+    {
+        $user = $this->user->get_user($uid);
+        return $this->check_pass_hash($pass_origin, $user['passhash'], $user['passsalt']);
+    }
     /*
      * 检查用户已经登录?
      * 登录了返回用户信息

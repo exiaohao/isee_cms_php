@@ -98,19 +98,19 @@ class register extends common
             /*
              * 注册成功,发送邮件
              */
-            if($this->utils->send_mail($data_arr['email'], $data_arr['realname'], SITE_NAME.' - 注册成功 验证信', sprintf($html_text_format, $data_arr['realname'], $data_arr['email'], $activate_url, $activate_url)))
-            {
+            //if($this->utils->send_mail($data_arr['email'], $data_arr['realname'], SITE_NAME.' - 注册成功 验证信', sprintf($html_text_format, $data_arr['realname'], $data_arr['email'], $activate_url, $activate_url)))
+            //{
                 /*
                  * 发邮件成功,跳转到登录
                  */
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 /*
                  * 发邮件失败,记录事件
                  * TODO
                  */
-            }
+            //}
             header('Location:/account#!/type/register_successful');
         }
         else
