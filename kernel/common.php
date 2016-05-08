@@ -11,7 +11,7 @@ define('DEBUG', true);
 //DEFAULT_HOMEPAGE
 define('DEFAULT_HOMEPAGE', 'welcome');
 //SITE_NAME
-define('SITE_NAME', 'ZJU ISEE');
+define('SITE_NAME', '浙江大学 共享信电');
 //TTL_LOGINATTEMPT
 define('TTL_LOGIN_ATTEMPT', 90);
 //TTL_REGISTER_ATTEMPT
@@ -30,9 +30,11 @@ define('STANDARD_USER', 0);
 define('PUB_AVAILABLE', 1);
 //ADMIN
 define('PUB_ADMIN', 2);
-
-
+//
 define('USER_IS_LOGIN', 1);
+//HOMEPAGE PAGINATE
+define('NEWS_PER_PAGE', 10);
+
 
 require 'class_db.php';
 require 'utils.php';
@@ -114,8 +116,8 @@ class common extends db
     {
         if ($_SESSION['valid'] == USER_IS_LOGIN)
         {
-            if($this->redis->TTL($_SESSION['user_token']) > 0 && $_SESSION['user_id'] > 0)
-            {
+            //if($this->redis->TTL($_SESSION['user_token']) > 0 && $_SESSION['user_id'] > 0)
+            //{
                 $user_info = $this->mysql->query('SELECT * FROM `student_basicinfo` WHERE  `id` = '.$_SESSION['user_id'].' LIMIT 0,1;');
                 if($user_info->num_rows > 0)
                     return $user_info->fetch_assoc();
@@ -123,11 +125,11 @@ class common extends db
                     unset($_SESSION['valid']);
                     return false;
                 }
-            }
-            else {
-                unset($_SESSION['valid']);
-                return false;
-            }
+            //}
+            //else {
+            //    unset($_SESSION['valid']);
+            //    return false;
+            //}
         }
     }
 }

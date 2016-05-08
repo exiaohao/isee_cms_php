@@ -13,7 +13,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"-->
-    <link rel="stylesheet" href="/css_loader/get/%2Fcss%2Fglobal.css/%2Fcss%2Fheader.css/%2Fbootstrap%2Fcss%2Fbootstrap.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/css_loader/get/%2Fcss%2Fglobal.css/%2Fcss%2Fheader.css/%2Fbootstrap%2Fcss%2Fbootstrap.css/%2Fcss%2Fhome.css" rel="stylesheet" media="screen">
     <title>首页 - <?=SITE_NAME; ?></title>
 </head>
 <body>
@@ -90,6 +90,48 @@
     </div>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<div class="container">
+    <div class="span4">
+        <h3>组织结构</h3>
+        <div>
+            <?php
+            $cats = $this->category->cat_list();
+            foreach ($cats['root'] as $cat) {
+                echo '<p class="header-cat">'.$cat['name'].'</p>';
+                foreach($cats['child'][$cat['id']] as $child)
+                {
+                    echo '<p class="child-cat"><a href="/category?id='.$child['id'].'">'.$child['name'].'</a></p>';
+                }
+            }
+
+            ?>
+        </div>
+    </div>
+    <div class="span6">
+        <h3>最新信息</h3>
+        <div>
+            <?php
+            $lines = mysqli_num_rows($this->mysql->query('SELECT * FROM  `posts` WHERE `status` >= 0 AND `is_hidden` = 0'));
+            $curr_page = is_numeric($_GET['page'])?($_GET['page'] + 0):0;
+
+            $start_page = $curr_page * NEWS_PER_PAGE;
+            $get_news = $this->mysql->query('SELECT * FROM  `posts` WHERE `status` >= 0 AND `is_hidden` = 0 ORDER by `pub_time` DESC LIMIT '.$start_page.','.NEWS_PER_PAGE);
+            while($news = mysqli_fetch_array($get_news))
+            {
+                echo '
+                <div class="news-node">
+                    <p class="news-header"><a href="/read?id='.$news['id'].'">'.$news['title'].'</a></p>
+                    <div class="overview">'.mb_substr(strip_tags(htmlspecialchars_decode($news['article_text'])), 0, 100, 'utf-8').'...</div>
+                    <p class="info">发布于 '.$news['pub_time'].'  浏览'.$news['read_count'].'  评论0</p>
+                </div>
+
+                ';
+            }
+            ?>
+        </div>
+    </div>
 </div>
 
 <script src="/static/js/jquery-1.10.2.min.js"></script>

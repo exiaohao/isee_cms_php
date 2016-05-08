@@ -16,12 +16,12 @@
       <div class="row">
         <div class="span3">
           <ul id="navi" class="nav nav-tabs nav-stacked">
-            <li><a class="navi-link" id="home" href="/my/home">首页</a></li>
-            <li><a class="navi-link" id="publish" href="/my/publish">发布</a></li>
-            <li><a class="navi-link" id="published" href="/my/published">已发布的</a></li>
-            <li><a class="navi-link" id="published" href="/my/manager">系统管理</a></li>
-            <li><a class="navi-link" id="published" href="/my/account">我的账号</a></li>
-            <li><a class="navi-link" id="published" href="/account/logout_attempt">退出</a></li>
+            <li><a class="navi-link" id="home" href="/my/home"><img src="/static/images/world.png" alt="首页" width="15" height="15"> 首页</a></li>
+            <li><a class="navi-link" id="publish" href="/my/publish"><img src="/static/images/pen.png" alt="撰写" width="15" height="15"> 撰写</a></li>
+            <li><a class="navi-link" id="published" href="/my/published"><img src="/static/images/stats.png" alt="已发布的" width="15" height="15"> 已发布的</a></li>
+            <li><a class="navi-link" id="published" href="/my/manager"><img src="/static/images/network.png" alt="系统管理"  width="15" height="15"> 系统管理</a></li>
+            <li><a class="navi-link" id="published" href="/my/account"><img src="/static/images/contacts.png" alt="我的账号" width="15" height="15"> 我的账号</a></li>
+            <li><a class="navi-link" id="published" href="/account/logout_attempt"><img src="/static/images/previous.png" alt="退出" width="15" height="15"> 退出</a></li>
           </ul>
         </div>
         <div id="main-wrapper" class="span9">

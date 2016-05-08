@@ -46,20 +46,20 @@ if($_GET['type'] == "edit")
 <?php
 if($article)
 {
-    echo '<h2>修改</h2><hr><form action="/my/edit_article" method="post"><input type="hidden" name="article_id" value="'.$article_id.'">';
+    echo '<h2>修改修改</h2><hr><form action="/my/edit_article" method="post"><input type="hidden" name="article_id" value="'.$article_id.'">';
 }
 else
 {
-    echo '<h2>发布</h2><hr><form action="/my/pub_article" method="post">';
+    echo '<h2>撰写新文章</h2><hr><form action="/my/pub_article" method="post">';
 }
 ?>
 
     <p>
-    <label for="title">标题</label>
+    <label for="title">文章标题</label>
     <input type="text" name="title" id="title" value="<?=$article['title']; ?>">
     </p>
     <p>
-        <label for="cat">分类</label>
+        <label for="cat">分类目录</label>
         <select name="category" id="cat">
             <?php
             $cats = $this->category->cat_list();
@@ -88,7 +88,9 @@ else
         </textarea>
     </p>
     <p>
-        <button class="btn btn-info" type="submit">发布</button>
+        <label>发布</label>
+        <button class="btn btn-info" type="submit">立即发布</button>
+        <button class="btn">保存为草稿</button>
     </p>
 </form>
 
