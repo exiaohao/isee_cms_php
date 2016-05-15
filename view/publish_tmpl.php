@@ -34,11 +34,11 @@ if($_GET['type'] == "edit")
         editor = K.create('textarea[name="content"]', {
             resizeType : 1,
             allowPreviewEmoticons : false,
-            allowImageUpload : false,
+            allowImageUpload : true,
             items : [
                 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+                'insertunorderedlist', '|', 'emoticons', 'image', 'link' | 'image']
         });
     });
 </script>
