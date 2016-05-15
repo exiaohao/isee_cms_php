@@ -132,7 +132,15 @@
             ?>
         </div>
     </div>
+
+    <div class="span12">
+        <hr />
+        <footer>
+            <p>@ Copyright <?=date(Y); ?> - <?=SITE_NAME; ?></p>
+        </footer>
+    </div>
 </div>
+
 
 <script src="/static/js/jquery-1.10.2.min.js"></script>
 <script src="/static/bootstrap/js/bootstrap.min.js"></script>
