@@ -47,7 +47,7 @@ session_start();
                 <a name="comment"></a>
                 <h5>评论</h5>
                 <?php
-                $comments = $this->mysql->query('SELECT * FROM `discuss` WHERE `post_id` ORDER BY `discuss`.`time` DESC;');
+                $comments = $this->mysql->query('SELECT * FROM `discuss` WHERE `post_id` = '.$argv['id'].' ORDER BY `discuss`.`time` DESC;');
                 while($cm_item = mysqli_fetch_array($comments))
                 {
                     $author = $this->user->get_nick_name($cm_item['author']);
