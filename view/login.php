@@ -24,6 +24,7 @@
             <label class="checkbox"><input type="checkbox" value="remember-me">记住我的账号 </label>
             <input type="hidden" name="_token" value="<?=$argv['uhash']; ?>">
             <input type="hidden" name="_track" value="">
+            <input type="hidden" name="_ref" value="<?=urldecode($_GET['ref']); ?>">
             <button class="btn btn-large btn-primary" type="submit">登录</button>
           </form>
         </div>
@@ -31,14 +32,6 @@
     </div>
     <div class="span6">
       <h3>如果你还没有注册</h3>
-      <p>
-        在报名前，您需要在本站注册一个属于您的账号，它将被用于：<br />
-        <ol>
-          <li>考试报名</li>
-          <li>查看消息</li>
-          <li>完成录取</li>
-        </ol>
-      </p>
       <p>
         <a class="btn btn-info" href="/register">马上注册</a>
       </p>

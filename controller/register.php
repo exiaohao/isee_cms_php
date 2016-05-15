@@ -56,20 +56,24 @@ class register extends common
 
 //        if(!$this->utils->request_freq_protect('register_CHK_IDCARD', $user_token, TTL_REGISTER_CHK_IDCARD, FREQ_REGISTER_CHK_IDCARD))
 //            die(json_encode(array('status'=>-1, 'msg'=>'您的请求过快')));
-
-        $idcard = $this->ar[0];
-        if($this->utils->checkMail($idcard, 'zju.edu.cn'))
-        {
-            $sql_check = $this->mysql->query('SELECT  `idcard` FROM `student_basicinfo` WHERE `idcard` LIKE \''.$idcard.'\' LIMIT 1');
-            if($sql_check->num_rows == 0)
-                die(json_encode(['status'=>0, 'msg'=>'邮箱合法']));
-            else
-                die(json_encode(['status'=>-1, 'msg'=>'邮箱已经注册过']));
-        }
+        $sql_check = $this->mysql->query('SELECT  `idcard` FROM `student_basicinfo` WHERE `idcard` LIKE \''.$idcard.'\' LIMIT 1');
+        if($sql_check->num_rows == 0)
+            die(json_encode(['status'=>0, 'msg'=>'合法']));
         else
-        {
-            die(json_encode(['status'=>-1, 'msg'=>'邮箱不合法,必须是@zju.edu.cn下的邮箱域']));
-        }
+            die(json_encode(['status'=>-1, 'msg'=>'账户已经被注册过']));
+//        $idcard = $this->ar[0];
+//        if($this->utils->checkMail($idcard, 'zju.edu.cn'))
+//        {
+//            $sql_check = $this->mysql->query('SELECT  `idcard` FROM `student_basicinfo` WHERE `idcard` LIKE \''.$idcard.'\' LIMIT 1');
+//            if($sql_check->num_rows == 0)
+//                die(json_encode(['status'=>0, 'msg'=>'邮箱合法']));
+//            else
+//                die(json_encode(['status'=>-1, 'msg'=>'邮箱已经注册过']));
+//        }
+//        else
+//        {
+//            die(json_encode(['status'=>-1, 'msg'=>'邮箱不合法,必须是@zju.edu.cn下的邮箱域']));
+//        }
     }
     /*
      * 处理注册SQL

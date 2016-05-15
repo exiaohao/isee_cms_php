@@ -28,8 +28,8 @@
     <div class="span6">
       <form id="registerform" action="register/do_register" method="post">
         <h4>账号信息</h4>
-        <label for="email" class="pull-left">电子邮件地址</label><span class="pull-right muted">仅允许@zju.edu.cn 这将成为您的登录用户名</span>
-        <input id="email" class="input-block-level" type="email" name="email" placeholder="Email">
+        <label for="email" class="pull-left">登录账户名</label>
+        <input id="email" class="input-block-level" type="text" name="email" placeholder="账户">
 
         <label for="password" class="pull-left">密码</label><span class="pull-right muted">至少6位</span>
         <input id="password" class="input-block-level" type="password" name="password" placeholder="密码">
@@ -69,7 +69,6 @@ $(document).ready(function() {
       },
       email:{
         required:true,
-        email:true
       },
     },
     messages:{
@@ -87,8 +86,7 @@ $(document).ready(function() {
         minlength:'至少2个字呗亲'
       },
       email:{
-        required:'请输入您的电子邮箱地址',
-        email:'请输入正确的电子邮箱地址'
+        required:'请输入您的登录名',
       },
     }
   });

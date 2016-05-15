@@ -1,0 +1,16 @@
+#header{
+    border-bottom: 1px solid #ddd;
+}
+
+.pub-info{
+    color: #999;
+    margin: 3px 0 15px 0;
+}
+
+.comment-line{
+    margin:5px 0
+}
+    .comment-line span{
+        color: #bbb;
+        font-size: 11px;
+    }

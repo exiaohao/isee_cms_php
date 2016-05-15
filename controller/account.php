@@ -50,7 +50,19 @@ class account extends common
                     // $this->redis->SET($user_token, $uip);
                     // $this->redis->EXPIRE($user_token, TTL_LOGIN_USER);
                     //
-                    header('Location:/my#!/home');
+                    if(empty($_POST['_ref'])) {
+                        if($user_basic_info['privilege'] > 0)
+                        {
+                            header('Location:/my#!/home');
+                        }
+                        else
+                        {
+                            header('Location:/');
+                        }
+                    }
+                    else{
+                        header('Location:'.urldecode($_POST['_ref']));
+                    }
                 }
                 else
                 {

@@ -13,5 +13,7 @@ class read extends common
         $id = is_numeric($_GET['id'])?$_GET['id']:header('Location:/');
         $article = mysqli_fetch_assoc($this->mysql->query("SELECT * FROM `posts` WHERE `id` = {$id} LIMIT 1;"));
         $this->load_page('read', $article);
+
+        $this->mysql->query('UPDATE `posts` SET read_count = read_count + 1 WHERE  `posts`.`id` = '.$id.' LIMIT 1');
     }
 }
